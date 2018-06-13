@@ -4,8 +4,10 @@ pipeline {
 	stages {
         
 	stage('Trigger from SCM') {
-        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
-        }
+        	steps {
+			properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
+        	}
+	}
 
 	stage('Build') {
             steps {
