@@ -1,14 +1,13 @@
 pipeline {
     agent any
 
-
-
-	stages ('Trigger from SCM') {
-	properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
-	}
-	
 	stages {
-        stage('Build') {
+        
+	stage ('Trigger from SCM') {
+        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
+        }
+
+	stage('Build') {
             steps {
                 echo 'Building..'
             }
