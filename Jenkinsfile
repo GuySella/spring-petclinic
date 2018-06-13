@@ -1,7 +1,11 @@
 pipeline {
     agent any
 
-    stages {
+#    triggers {
+#        github(triggerOnPush: true)
+#    	}
+	
+	stages {
         stage('Build') {
             steps {
                 echo 'Building..'
