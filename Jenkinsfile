@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-#	triggers {
-#        githubPush()
-#    	}
+
 
 	stage ('Trigger from SCM') {
 	properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
