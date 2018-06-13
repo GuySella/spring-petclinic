@@ -3,7 +3,7 @@ pipeline {
 
 	stages {
         
-	stage ('Trigger from SCM') {
+	stage('Trigger from SCM') {
         properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
         }
 
