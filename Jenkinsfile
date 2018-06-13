@@ -1,9 +1,13 @@
 pipeline {
     agent any
 
-  triggers {
-        githubPush()
-    	}
+#	triggers {
+#        githubPush()
+#    	}
+
+	stage ('Trigger from SCM') {
+	properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('* * * * *')])])
+	}
 	
 	stages {
         stage('Build') {
