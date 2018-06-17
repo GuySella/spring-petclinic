@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Building docker image') {
             steps {
-                sh 'docker build -t petclinic_jar/spring-petclinic:latest .'
+                sh 'docker build -t guysella/spring-petclinic:latest .'
             }
         }
         
