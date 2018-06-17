@@ -4,11 +4,12 @@ pipeline {
   
     tools {
     maven "apache-maven-3.5.3"
-    // docker "docker_jen"
     }
 
     stages {
-        
+        stage("init") {
+            tool 'docker_jen'
+        }
 		stage("build") {
             steps {
     
@@ -31,9 +32,10 @@ pipeline {
         stage('Deploy to dockerhub') {
             steps {
                 script {
-                    docker.withTool("docker_jen") {docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         sh 'docker push petclinic_jar/spring-petclinic:latest'
-                    }   }
+                        }   
+                    
                 }
             }
         }
