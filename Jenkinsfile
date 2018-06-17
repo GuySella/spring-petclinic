@@ -35,10 +35,7 @@ pipeline {
             script {
                 docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub')
             }
-            
-            steps {
-                sh 'docker push guysella/spring-petclinic'
-            }
+            sh 'docker push guysella/spring-petclinic'
         }
     }
 
