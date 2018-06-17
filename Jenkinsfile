@@ -15,14 +15,12 @@ pipeline {
                 sh 'echo "JAVA_HOME: ${JAVA_HOME}"'
                 sh 'mvn clean package'
             }
+                post {
+                    always {
+                        junit 'target/surefire-reports/*.xml'
+                    }
+                }
         }
-    
-        post {
-            always {
-                junit 'target/surefire-reports/*.xml'
-            }
-        }
-
         stage('Test') {
             steps {
                 echo 'Testing..'
