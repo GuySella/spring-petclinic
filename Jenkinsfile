@@ -21,15 +21,15 @@ pipeline {
                     }
                 }
         }
-        stage('Test') {
+        stage('Building docker image') {
             steps {
-                echo 'Testing..'
-                  }
+                sh 'docker build -t petclinic_jar/spring-petclinic:latest .'
+            }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                  }
+        
+        stage('Deploy to dockerhub') {
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
+                sh 'docker push petclinic_jar/spring-petclinic:latest'
         }
     }
 
