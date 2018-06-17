@@ -30,15 +30,14 @@ pipeline {
                 sh 'docker build -t guysella/spring-petclinic:latest .'
             }
         }
-        
         stage('Deploy to dockerhub') {
-            steps {
+            // steps {
             //    script {
                     docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub') {
                        sh 'docker push guysella/spring-petclinic:latest'
                     }
                 // }
-            }
+            // }
         }
     }
 
