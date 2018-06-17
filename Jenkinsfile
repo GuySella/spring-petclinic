@@ -32,10 +32,12 @@ pipeline {
         }
         
         stage('Deploy to dockerhub') {
+            script {
+                docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub')
+            }
+            
             steps {
-                docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub') {
-                    sh 'docker push guysella/spring-petclinic'
-                }
+                sh 'docker push guysella/spring-petclinic'
             }
         }
     }
