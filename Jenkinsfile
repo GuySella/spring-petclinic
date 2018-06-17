@@ -31,13 +31,13 @@ pipeline {
             }
         }
         stage('Deploy to dockerhub') {
-            // steps {
-            //    script {
+            steps {
+                script {
                     docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub') {
-                       docker push guysella/spring-petclinic:latest
+                       sh 'docker push guysella/spring-petclinic:latest'
                     }
-                // }
-            // }
+                }
+            }
         }
     }
 
