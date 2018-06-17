@@ -28,8 +28,9 @@ pipeline {
         }
         
         stage('Deploy to dockerhub') {
-            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                 sh 'docker push petclinic_jar/spring-petclinic:latest'
+            }
         }
     }
 
