@@ -4,6 +4,7 @@ pipeline {
   
     tools {
     maven "apache-maven-3.5.3"
+    docker "Docker"
     }
 
     stages {
