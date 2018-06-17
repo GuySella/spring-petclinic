@@ -8,8 +8,10 @@ pipeline {
 
     stages {
         stage("init") {
-            tool 'docker_jen'
-        }
+            steps {
+                tool 'docker_jen'
+                }   
+        }   
 		stage("build") {
             steps {
     
