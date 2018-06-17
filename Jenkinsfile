@@ -34,7 +34,7 @@ pipeline {
         stage('Deploy to dockerhub') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com/r/guysella/jenkins/', 'dockerhub') {
                         sh 'docker push petclinic_jar/spring-petclinic:latest'
                         }   
                     
